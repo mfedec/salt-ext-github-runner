@@ -26,5 +26,5 @@ def exampled(name):
     value = __salt__["github_runner.example_function"](name)
     if value == name:
         ret["result"] = True
-        ret["comment"] = "The 'github_runner.example_function' returned: '{}'".format(value)
+        ret["comment"] = f"The 'github_runner.example_function' returned: '{value}'"
     return ret

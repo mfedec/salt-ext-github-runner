@@ -26,6 +26,6 @@ def test_replace_this_this_with_something_meaningful():
         "name": echo_str,
         "changes": {},
         "result": True,
-        "comment": "The 'github_runner.example_function' returned: '{}'".format(echo_str),
+        "comment": f"The 'github_runner.example_function' returned: '{echo_str}'",
     }
     assert github_runner_state.exampled(echo_str) == expected
