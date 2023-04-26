@@ -1,29 +1,6 @@
-﻿saltext.github\_runner.modules.github\_runner\_mod
-==================================================
+
+saltext.github_runner.modules.github_runner_mod
+===============================================
 
 .. automodule:: saltext.github_runner.modules.github_runner_mod
-
-   
-   
-   
-
-   
-   
-   .. rubric:: Functions
-
-   .. autosummary::
-   
-      example_function
-   
-   
-
-   
-   
-   
-
-   
-   
-   
-
-
-
+    :members:
