@@ -1,6 +1,6 @@
+﻿saltext.github\_runner.states.\_\_init\_\_
+==========================================
 
-saltext.github_runner.states.__init__
-=====================================
+.. currentmodule:: saltext.github_runner.states
 
-.. automodule:: saltext.github_runner.states.__init__
-    :members:
+.. autodata:: __init__

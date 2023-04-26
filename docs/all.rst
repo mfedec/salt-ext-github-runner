@@ -7,10 +7,10 @@ Complete List of github_runner
 .. toctree::
    :maxdepth: 2
 
-   ref/modules.rst
+   ref/modules/all.rst
 
 
 .. toctree::
    :maxdepth: 2
 
-   ref/states.rst
+   ref/states/all.rst
