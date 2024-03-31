@@ -1,28 +1,28 @@
 
 name: Testing
 
-on: [push, pull_request]
+on: [workflow_dispatch, push, pull_request]
 
 jobs:
   Pre-Commit:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
-        python-version: 3.7
+        python-version: 3.9
     - name: Set Cache Key
       run: echo "PY=$(python --version --version | sha256sum | cut -d' ' -f1)" >> $GITHUB_ENV
     - name: Install System Deps
       run: |
         sudo apt-get update
         sudo apt-get install -y libxml2 libxml2-dev libxslt-dev
-    - uses: actions/cache@v3
+    - uses: actions/cache@v4
       with:
         path: ~/.cache/pre-commit
         key: pre-commit|${{ env.PY }}|${{ hashFiles('.pre-commit-config.yaml') }}
-    - uses: pre-commit/action@v3.0.0
+    - uses: pre-commit/action@v3.0.1
 
   Docs:
     runs-on: ubuntu-latest
@@ -31,12 +31,12 @@ jobs:
     timeout-minutes: 10
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
-    - name: Set up Python 3.7 For Nox
-      uses: actions/setup-python@v4
+    - name: Set up Python 3.9 For Nox
+      uses: actions/setup-python@v5
       with:
-        python-version: 3.7
+        python-version: 3.9
 
     - name: Install Nox
       run: |
@@ -64,18 +64,17 @@ jobs:
       max-parallel: 4
       matrix:
         python-version:
-          - 3.8
-          - 3.9
+          - '3.8'
+          - '3.9'
         salt-version:
-          - 3004.2
-          - 3005.1
-          - 3006.0
+          - '3005.4'
+          - '3006.6'
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
 
@@ -185,16 +184,16 @@ jobs:
       max-parallel: 3
       matrix:
         include:
-          - python-version: 3.8
-            salt-version: 3004.2
-          - python-version: 3.8
-            salt-version: 3005.1
+          - python-version: '3.8'
+            salt-version: '3005.4'
+          - python-version: '3.8'
+            salt-version: '3006.1'
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v5
 
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
 
@@ -319,16 +318,16 @@ jobs:
       max-parallel: 3
       matrix:
         include:
-          - python-version: 3.9
-            salt-version: 3005.1
-          - python-version: 3.10.11
-            salt-version: 3006.0
+          - python-version: '3.9'
+            salt-version: '3005.4'
+          - python-version: '3.10'
+            salt-version: '3006.4'
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
 
